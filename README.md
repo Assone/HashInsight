@@ -1,54 +1,33 @@
-# React + TypeScript + Vite
+# HashInsight
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+HashInsight is a high-performance hash checker application built on React. It uses WASM to achieve high performance, and your files are never uploaded to the server side. It is designed for use in secure and private environments, ensuring that your data remains confidential and protected at all times.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Fast Hash Calculation**: Utilizes WebAssembly (WASM) for ultra-fast hash calculations.
+- **Secure File Handling**: Ensures that files are processed locally without ever being uploaded to the server.
 
-## Expanding the ESLint configuration
+## Environment
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+You need to have Node.js and npm installed on your machine. You can download them from [here](https://nodejs.org/en/download/). Make sure you have the latest version of pnpm installed. If you don't have pnpm installed, you can install it by running `npm install -g pnpm`.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+At the same time, you also need to install the environment of Rust. You can download it from [here](https://www.rust-lang.org/tools/install). And make sure you have the latest version of [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Clone the repository: `git clone https://github.com/Assone/HashInsight.git`
+- Install dependencies: `pnpm install`
+- Build the WASM module(in calculation folder): `wasm-pack build --target web`
+- Start the development server: `pnpm dev`
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## Contributing
+
+- Fork the repository
+- Create a new branch: `git checkout -b feature/your-feature`
+- Make your changes and commit them: `git commit -m 'Add your feature'`
+- Push to the branch: `git push origin feature/your-feature`
+- Submit a pull request
+
+## Acknowledgments
+
+- Thanks to the React community for their support and contributions.
