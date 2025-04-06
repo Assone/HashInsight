@@ -33,12 +33,9 @@ self.onmessage = async (evt: MessageEvent<File>) => {
       })
     );
 
+  const types: CalculateType[] = ["md5", "sha1", "sha256", "sha384", "sha512"];
+
   self.postMessage({ type: "start" });
-  await Promise.all([
-    postDigest("md5"),
-    postDigest("sha1"),
-    postDigest("sha256"),
-    postDigest("sha512"),
-  ]);
+  await Promise.all(types.map(postDigest));
   self.postMessage({ type: "end" });
 };
