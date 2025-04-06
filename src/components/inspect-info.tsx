@@ -37,8 +37,7 @@ export const InspectInfo: React.FC<InspectInfoProps> = ({
             key={label}
             className={cn({
               "cursor-not-allowed": isLoading && value === undefined,
-              "cursor-pointer":
-                isLoading === false && value !== undefined && isSupported,
+              "cursor-pointer": isSupported && value !== undefined,
             })}
             label={label}
             value={isLoading && value === undefined ? undefined : value}
