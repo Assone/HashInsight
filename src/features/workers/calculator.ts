@@ -1,7 +1,10 @@
 import { calculate as calculateMd5 } from "../calculator/md5";
-import { calculate as calculateSha } from "../calculator/sha";
+import {
+  calculate as calculateSha,
+  type CalculateType as SHACalculateType,
+} from "../calculator/sha";
 
-export type CalculateType = "md5" | "sha1" | "sha256" | "sha512";
+export type CalculateType = "md5" | SHACalculateType;
 export type EventType = "start" | "end";
 
 self.onmessage = async (evt: MessageEvent<File>) => {
@@ -14,6 +17,7 @@ self.onmessage = async (evt: MessageEvent<File>) => {
       }
       case "sha1":
       case "sha256":
+      case "sha384":
       case "sha512": {
         return calculateSha(blob, type);
       }

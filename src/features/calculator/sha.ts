@@ -6,7 +6,7 @@ import initShaWasm, {
 
 let shaWasmReady: Promise<unknown>;
 
-type CalculateType = "sha1" | "sha256" | "sha512";
+export type CalculateType = "sha1" | "sha256" | "sha384" | "sha512";
 
 export const calculate = async (
   blob: Blob,

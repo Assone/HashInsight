@@ -4,12 +4,12 @@ import { useEffect, useReducer, useState } from "react";
 
 const worker = new Calculator();
 
-type State = Partial<Record<"md5" | "sha1" | "sha256" | "sha512", string>>;
+type State = Partial<Record<CalculateType, string>>;
 
 type CreateAction<T extends Record<string, unknown>> = {
   [K in keyof T]: T[K] extends undefined
-  ? { type: K }
-  : { type: K; payload: Required<T[K]> };
+    ? { type: K }
+    : { type: K; payload: Required<T[K]> };
 }[keyof T];
 
 type Actions = CreateAction<{
@@ -24,6 +24,7 @@ const reducer = (state: State, action: Actions): State => {
         md5: undefined,
         sha1: undefined,
         sha256: undefined,
+        sha384: undefined,
         sha512: undefined,
       };
     }
