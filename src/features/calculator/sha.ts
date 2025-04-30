@@ -1,6 +1,7 @@
 import initShaWasm, {
   calculate_sha1,
   calculate_sha256,
+  calculate_sha384,
   calculate_sha512,
 } from "calculator/sha/pkg";
 
@@ -20,13 +21,20 @@ export const calculate = async (
 
   const input = new Uint8Array(await blob.arrayBuffer());
 
-  if (type === "sha1") {
+switch (type) {
+  case 'sha1':
     return calculate_sha1(input);
-  }
 
-  if (type === "sha512") {
+  case 'sha256':
+    return calculate_sha256(input);
+
+  case 'sha384':
+    return calculate_sha384(input);
+
+  case 'sha512':
     return calculate_sha512(input);
-  }
 
-  return calculate_sha256(input);
+  default:
+    throw new Error("Invalid algorithm");
+}
 };
