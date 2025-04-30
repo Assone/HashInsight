@@ -21,20 +21,20 @@ export const calculate = async (
 
   const input = new Uint8Array(await blob.arrayBuffer());
 
-switch (type) {
-  case 'sha1':
-    return calculate_sha1(input);
+  switch (type) {
+    case 'sha1':
+      return calculate_sha1(input);
 
-  case 'sha256':
-    return calculate_sha256(input);
+    case 'sha256':
+      return calculate_sha256(input);
 
-  case 'sha384':
-    return calculate_sha384(input);
+    case 'sha384':
+      return calculate_sha384(input);
 
-  case 'sha512':
-    return calculate_sha512(input);
+    case 'sha512':
+      return calculate_sha512(input);
 
-  default:
-    throw new Error("Invalid algorithm");
-}
+    default:
+      throw new Error("Invalid algorithm");
+  }
 };
